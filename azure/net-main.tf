@@ -152,88 +152,45 @@ resource "azurerm_virtual_network_peering" "vnet-south-to-vnet-secmgmt" {
   depends_on = [azurerm_subnet.net-secmgmt,azurerm_subnet.net-south-backend,azurerm_subnet.net-south-frontend]
 }
 
-# Creation of the Spoke Num1
-resource "azurerm_resource_group" "rg-vnet-spoke-1" {
-  name = "rg-v${var.net-spoke}-1"
+# Creation of the Spoke Num
+resource "azurerm_resource_group" "rg-vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "rg-v${var.net-spoke}-${count.index}"
   location = var.location
 }
-resource "azurerm_network_security_group" "sg-vnet-spoke-1" {
-  name = "sg-v${var.net-spoke}-1"
+resource "azurerm_network_security_group" "sg-vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "sg-v${var.net-spoke}-${count.index}"
   location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-1]
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  depends_on = [azurerm_resource_group.rg-vnet-spoke]
 }
-resource "azurerm_virtual_network" "vnet-spoke-1" {
-  name = "v${var.net-spoke}-1"
-  address_space = ["10.0.0.0/22"]
+resource "azurerm_virtual_network" "vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "v${var.net-spoke}-${count.index}"
+  address_space = ["${lookup(var.num-spoke, count.index)[0]}/22"]
   location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-1"
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
   tags = {
-    environment = "spoke-1"
+    environment = "spoke"
   }
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-1]
+  depends_on = [azurerm_resource_group.rg-vnet-spoke]
 }
-resource "azurerm_subnet" "net-spoke-1-web" {
-  name = "${var.net-spoke}-1-web"
-  address_prefixes = ["10.0.0.0/24"]
-  virtual_network_name = "v${var.net-spoke}-1"
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  depends_on = [azurerm_virtual_network.vnet-spoke-1]
+resource "azurerm_subnet" "net-spoke-web" {
+  count = length(var.num-spoke)
+  name = "${var.net-spoke}-${count.index}-web"
+  address_prefixes = ["${lookup(var.num-spoke, count.index)[0]}/24"]
+  virtual_network_name = "v${var.net-spoke}-${count.index}"
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  depends_on = [azurerm_virtual_network.vnet-spoke]
 }
-resource "azurerm_subnet" "net-spoke-1-db" {
-  name = "${var.net-spoke}-1-db"
-  address_prefixes = ["10.0.1.0/24"]
-  virtual_network_name = "v${var.net-spoke}-1"
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  depends_on = [azurerm_virtual_network.vnet-spoke-1]
-}
-
-# Peering from/to spoke to north
-resource "azurerm_virtual_network_peering" "vnet-spoke-1-to-vnet-north" {
-  name = "v${var.net-spoke}-1-to-v${var.net-north}"
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  virtual_network_name = "v${var.net-spoke}-1"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-north.id
-  allow_virtual_network_access = true
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-1-web,azurerm_subnet.net-spoke-1-db,
-                azurerm_subnet.net-north-backend,azurerm_subnet.net-north-frontend]
-}
-resource "azurerm_virtual_network_peering" "vnet-north-to-vnet-spoke-1" {
-  name = "v${var.net-north}-to-v${var.net-spoke}-1"
-  resource_group_name = "rg-v${var.net-north}"
-  virtual_network_name = "v${var.net-north}"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke-1.id
-  allow_virtual_network_access = true
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-1-web,azurerm_subnet.net-spoke-1-db,
-                azurerm_subnet.net-north-backend,azurerm_subnet.net-north-frontend]
-}
-
-# Peering from/to spoke to south
-resource "azurerm_virtual_network_peering" "vnet-spoke-1-to-vnet-south" {
-  name = "v${var.net-spoke}-1-to-v${var.net-south}"
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  virtual_network_name = "v${var.net-spoke}-1"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-south.id
-  allow_virtual_network_access = true
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-1-web,azurerm_subnet.net-spoke-1-db,
-                azurerm_subnet.net-south-backend,azurerm_subnet.net-south-frontend]
-}
-resource "azurerm_virtual_network_peering" "vnet-south-to-vnet-spoke-1" {
-  name = "v${var.net-south}-to-v${var.net-spoke}-1"
-  resource_group_name = "rg-v${var.net-south}"
-  virtual_network_name = "v${var.net-south}"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke-1.id
-  allow_virtual_network_access = true
-  allow_forwarded_traffic = true
-  allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-1-web,azurerm_subnet.net-spoke-1-db,
-                azurerm_subnet.net-south-backend,azurerm_subnet.net-south-frontend]
+resource "azurerm_subnet" "net-spoke-db" {
+  count = length(var.num-spoke)
+  name = "${var.net-spoke}-${count.index}-db"
+  address_prefixes = ["${lookup(var.num-spoke, count.index)[1]}/24"]
+  virtual_network_name = "v${var.net-spoke}-${count.index}"
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  depends_on = [azurerm_virtual_network.vnet-spoke]
 }
 
 # Routing Tables for Spoke
@@ -241,11 +198,12 @@ locals { // locals for 'next_hop_type' allowed values
   next_hop_type_allowed_values = ["VirtualNetworkGateway","VnetLocal","Internet","VirtualAppliance","None"]
 }
 
-resource "azurerm_route_table" "rt-vnet-spoke-1" {
-  name = "rt-v${var.net-spoke}-1"
+resource "azurerm_route_table" "rt-vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "rt-v${var.net-spoke}-${count.index}"
   location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-1"
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-1]
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  depends_on = [azurerm_resource_group.rg-vnet-spoke]
 
   route {
     name = "route-to-internet"
@@ -260,137 +218,71 @@ resource "azurerm_route_table" "rt-vnet-spoke-1" {
   }
   route {
     name = "route-to-vnet-addrspace"
-    address_prefix = azurerm_virtual_network.vnet-spoke-1.address_space[0]
+    address_prefix = azurerm_virtual_network.vnet-spoke[count.index].address_space[0]
     next_hop_type = local.next_hop_type_allowed_values[1]
   }
 }
-resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-1-web" {
-  subnet_id = azurerm_subnet.net-spoke-1-web.id
-  route_table_id = azurerm_route_table.rt-vnet-spoke-1.id
-  depends_on = [azurerm_subnet.net-spoke-1-web,azurerm_route_table.rt-vnet-spoke-1]
+resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-web" {
+  count = length(var.num-spoke)
+  subnet_id = azurerm_subnet.net-spoke-web[count.index].id
+  route_table_id = azurerm_route_table.rt-vnet-spoke[count.index].id
+  depends_on = [azurerm_subnet.net-spoke-web,azurerm_route_table.rt-vnet-spoke]
 }
-resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-1-db" {
-  subnet_id = azurerm_subnet.net-spoke-1-db.id
-  route_table_id = azurerm_route_table.rt-vnet-spoke-1.id
-  depends_on = [azurerm_subnet.net-spoke-1-db,azurerm_route_table.rt-vnet-spoke-1]
-}
-
-# Spoke Num2
-resource "azurerm_resource_group" "rg-vnet-spoke-2" {
-  name = "rg-v${var.net-spoke}-2"
-  location = var.location
-}
-resource "azurerm_network_security_group" "sg-vnet-spoke-2" {
-  name = "sg-v${var.net-spoke}-2"
-  location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-2]
-}
-resource "azurerm_virtual_network" "vnet-spoke-2" {
-  name = "v${var.net-spoke}-2"
-  address_space = ["10.0.4.0/22"]
-  location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  tags = {
-    environment = "spoke-2"
-  }
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-2]
-}
-resource "azurerm_subnet" "net-spoke-2-web" {
-  name = "${var.net-spoke}-2-web"
-  address_prefixes = ["10.0.4.0/24"]
-  virtual_network_name = "v${var.net-spoke}-2"
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  depends_on = [azurerm_virtual_network.vnet-spoke-2]
-}
-resource "azurerm_subnet" "net-spoke-2-db" {
-  name = "${var.net-spoke}-2-db"
-  address_prefixes = ["10.0.5.0/24"]
-  virtual_network_name = "v${var.net-spoke}-2"
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  depends_on = [azurerm_virtual_network.vnet-spoke-2]
+resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-db" {
+  count = length(var.num-spoke)
+  subnet_id = azurerm_subnet.net-spoke-db[count.index].id
+  route_table_id = azurerm_route_table.rt-vnet-spoke[count.index].id
+  depends_on = [azurerm_subnet.net-spoke-db,azurerm_route_table.rt-vnet-spoke]
 }
 
 # Peering from/to spoke to north
-resource "azurerm_virtual_network_peering" "vnet-spoke-2-to-vnet-north" {
-  name = "v${var.net-spoke}-2-to-v${var.net-north}"
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  virtual_network_name = "v${var.net-spoke}-2"
+resource "azurerm_virtual_network_peering" "vnet-spoke-to-vnet-north" {
+  count = length(var.num-spoke)
+  name = "v${var.net-spoke}-${count.index}-to-v${var.net-north}"
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  virtual_network_name = "v${var.net-spoke}-${count.index}"
   remote_virtual_network_id = azurerm_virtual_network.vnet-north.id
   allow_virtual_network_access = true
   allow_forwarded_traffic = true
   allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-2-web,azurerm_subnet.net-spoke-2-db,
+  depends_on = [azurerm_subnet.net-spoke-web,azurerm_subnet.net-spoke-db,
                 azurerm_subnet.net-north-backend,azurerm_subnet.net-north-frontend]
 }
-resource "azurerm_virtual_network_peering" "vnet-north-to-vnet-spoke-2" {
-  name = "v${var.net-north}-to-v${var.net-spoke}-2"
+resource "azurerm_virtual_network_peering" "vnet-north-to-vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "v${var.net-north}-to-v${var.net-spoke}-${count.index}"
   resource_group_name = "rg-v${var.net-north}"
   virtual_network_name = "v${var.net-north}"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke-2.id
+  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke[count.index].id
   allow_virtual_network_access = true
   allow_forwarded_traffic = true
   allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-2-web,azurerm_subnet.net-spoke-2-db,
+  depends_on = [azurerm_subnet.net-spoke-web,azurerm_subnet.net-spoke-db,
                 azurerm_subnet.net-north-backend,azurerm_subnet.net-north-frontend]
 }
 
 # Peering from/to spoke to south
-resource "azurerm_virtual_network_peering" "vnet-spoke-2-to-vnet-south" {
-  name = "v${var.net-spoke}-2-to-v${var.net-south}"
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  virtual_network_name = "v${var.net-spoke}-2"
+resource "azurerm_virtual_network_peering" "vnet-spoke-to-vnet-south" {
+  count = length(var.num-spoke)
+  name = "v${var.net-spoke}-${count.index}-to-v${var.net-south}"
+  resource_group_name = "rg-v${var.net-spoke}-${count.index}"
+  virtual_network_name = "v${var.net-spoke}-${count.index}"
   remote_virtual_network_id = azurerm_virtual_network.vnet-south.id
   allow_virtual_network_access = true
   allow_forwarded_traffic = true
   allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-2-web,azurerm_subnet.net-spoke-2-db,
+  depends_on = [azurerm_subnet.net-spoke-web,azurerm_subnet.net-spoke-db,
                 azurerm_subnet.net-south-backend,azurerm_subnet.net-south-frontend]
 }
-resource "azurerm_virtual_network_peering" "vnet-south-to-vnet-spoke-2" {
-  name = "v${var.net-south}-to-v${var.net-spoke}-2"
+resource "azurerm_virtual_network_peering" "vnet-south-to-vnet-spoke" {
+  count = length(var.num-spoke)
+  name = "v${var.net-south}-to-v${var.net-spoke}-${count.index}"
   resource_group_name = "rg-v${var.net-south}"
   virtual_network_name = "v${var.net-south}"
-  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke-2.id
+  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke[count.index].id
   allow_virtual_network_access = true
   allow_forwarded_traffic = true
   allow_gateway_transit = false
-  depends_on = [azurerm_subnet.net-spoke-2-web,azurerm_subnet.net-spoke-2-db,
+  depends_on = [azurerm_subnet.net-spoke-web,azurerm_subnet.net-spoke-db,
                 azurerm_subnet.net-south-backend,azurerm_subnet.net-south-frontend]
-}
-
-# Routing Tables for Spoke
-
-resource "azurerm_route_table" "rt-vnet-spoke-2" {
-  name = "rt-v${var.net-spoke}-2"
-  location = var.location
-  resource_group_name = "rg-v${var.net-spoke}-2"
-  depends_on = [azurerm_resource_group.rg-vnet-spoke-2]
-
-  route {
-    name = "route-to-internet"
-    address_prefix = "0.0.0.0/0"
-    next_hop_type = local.next_hop_type_allowed_values[3]
-    next_hop_in_ip_address = "172.16.1.4"
-  }
-  route {
-    name = "route-to-my-pub-ip"
-    address_prefix = var.my-pub-ip
-    next_hop_type = local.next_hop_type_allowed_values[2]
-  }
-  route {
-    name = "route-to-vnet-addrspace"
-    address_prefix = azurerm_virtual_network.vnet-spoke-2.address_space[0]
-    next_hop_type = local.next_hop_type_allowed_values[1]
-  }
-}
-resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-2-web" {
-  subnet_id = azurerm_subnet.net-spoke-2-web.id
-  route_table_id = azurerm_route_table.rt-vnet-spoke-2.id
-  depends_on = [azurerm_subnet.net-spoke-2-web,azurerm_route_table.rt-vnet-spoke-2]
-}
-resource "azurerm_subnet_route_table_association" "rt-assoc-net-spoke-2-db" {
-  subnet_id = azurerm_subnet.net-spoke-2-db.id
-  route_table_id = azurerm_route_table.rt-vnet-spoke-2.id
-  depends_on = [azurerm_subnet.net-spoke-2-db,azurerm_route_table.rt-vnet-spoke-2]
 }
