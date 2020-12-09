@@ -12,8 +12,8 @@ resource "azurerm_resource_group" "rg-vnet-north" {
   name = "rg-v${var.net-north}"
   location = var.location
 }
-resource "azurerm_network_security_group" "sg-vnet-north" {
-  name = "sg-v${var.net-north}"
+resource "azurerm_network_security_group" "nsg-vnet-north" {
+  name = "nsg-v${var.net-north}"
   location = var.location
   resource_group_name = "rg-v${var.net-north}"
   depends_on = [azurerm_resource_group.rg-vnet-north]
@@ -48,8 +48,8 @@ resource "azurerm_resource_group" "rg-vnet-south" {
   name = "rg-v${var.net-south}"
   location = var.location
 }
-resource "azurerm_network_security_group" "sg-vnet-south" {
-  name = "sg-v${var.net-south}"
+resource "azurerm_network_security_group" "nsg-vnet-south" {
+  name = "nsg-v${var.net-south}"
   location = var.location
   resource_group_name = "rg-v${var.net-south}"
   depends_on = [azurerm_resource_group.rg-vnet-south]
@@ -84,8 +84,8 @@ resource "azurerm_resource_group" "rg-vnet-secmgmt" {
   name = "rg-v${var.net-secmgmt}"
   location = var.location
 }
-resource "azurerm_network_security_group" "sg-vnet-secmgmt" {
-  name = "sg-v${var.net-secmgmt}"
+resource "azurerm_network_security_group" "nsg-vnet-secmgmt" {
+  name = "nsg-v${var.net-secmgmt}"
   location = var.location
   resource_group_name = "rg-v${var.net-secmgmt}"
   depends_on = [azurerm_resource_group.rg-vnet-secmgmt]
@@ -158,9 +158,9 @@ resource "azurerm_resource_group" "rg-vnet-spoke" {
   name = "rg-v${var.net-spoke}-${count.index}"
   location = var.location
 }
-resource "azurerm_network_security_group" "sg-vnet-spoke" {
+resource "azurerm_network_security_group" "nsg-vnet-spoke" {
   count = length(var.num-spoke)
-  name = "sg-v${var.net-spoke}-${count.index}"
+  name = "nsg-v${var.net-spoke}-${count.index}"
   location = var.location
   resource_group_name = "rg-v${var.net-spoke}-${count.index}"
   depends_on = [azurerm_resource_group.rg-vnet-spoke]

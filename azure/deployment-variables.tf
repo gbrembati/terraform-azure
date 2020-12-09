@@ -1,19 +1,19 @@
 
 variable "azure-client-id" {
     description = "Insert your application client-id"
-    default = "xx-xx-xx-xx-xx"
+    default = "xxxxx"
 } 
 variable "azure-client-secret" {
     description = "Insert your application client-secret"
-    default = "xx-xx-xx-xx-xx"
+    default = "xxxxx"
 }
 variable "azure-subscription" {
     description = "Insert your subscription-id"
-    default = "xx-xx-xx-xx-xx"
+    default = "xxxxx"
 }
 variable "azure-tenant" {
     description = "Insert your active-directory-id"
-    default = "xx-xx-xx-xx-xx"
+    default = "xxxxx"
 }
 
 variable "location" {
@@ -23,7 +23,7 @@ variable "location" {
 
 variable "my-pub-ip" {
     description = "Put your public-ip"
-    default = "xx.xx.xx.xx/32"
+    default = "x.x.x.x/32"
 }
 
 variable "mgmt-dns-suffix" {
@@ -34,4 +34,10 @@ variable "mgmt-dns-suffix" {
 variable "mgmt-admin-pwd" {
     description = "Choose your management admin password"
     default = "xxxxx"
+}
+
+variable "deploy-vmspoke" {
+    description = "Do you want to deploy test VMs inside the spokes?"
+    type = bool
+    default = true
 }
