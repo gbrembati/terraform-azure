@@ -34,12 +34,6 @@ resource "checkpoint_management_dynamic_object" "dyn-obj-local-ext" {
   color = "blue"
 }
 
-# Publish the session after the creation of the objects
-resource "checkpoint_management_publish" "post-dc-publish" {
-  depends_on = [checkpoint_management_host.my-public-ip,checkpoint_management_dynamic_object.dyn-obj-local-ext,
-              checkpoint_management_dynamic_object.dyn-obj-local-int]
-}
-
 # Cloud Management Extension installation
 resource "checkpoint_management_run_script" "script-cme" {
   script_name = "CME Install"
@@ -47,9 +41,23 @@ resource "checkpoint_management_run_script" "script-cme" {
   targets = [var.mgmt-name]
 }
 
-# Azure Datacenter
-#resource "checkpoint_management_run_script" "dc-azure" {
-#  script_name = "Install Azure DC"
-#  script = "xxxx"
-#  targets = [var.mgmt-name]
-#}
+# Create a new policy package
+resource "checkpoint_management_package" "azure-policy-pkg" {
+  name = var.new-policy-pkg
+  access = true
+  threat_prevention = true
+  color = "blue"
+}
+
+# Publish the session after the creation of the objects
+resource "checkpoint_management_publish" "post-dc-publish" {
+  depends_on = [checkpoint_management_host.my-public-ip,checkpoint_management_dynamic_object.dyn-obj-local-ext,
+         checkpoint_management_dynamic_object.dyn-obj-local-int,checkpoint_management_package.azure-policy-pkg]
+}
+
+# Create the Azure Datacenter
+resource "checkpoint_management_run_script" "dc-azure" {
+  script_name = "Install Azure DC"
+  script = "mgmt_cli add data-center-server name 'dc-azure' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' --user '${var.api-username}' --password '${var.api-password}'"
+  targets = [var.mgmt-name]
+}

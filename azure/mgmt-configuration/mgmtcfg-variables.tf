@@ -1,14 +1,9 @@
-
 variable "azure-client-id" {
     description = "Insert your application client-id"
     default = "xxxxx"
 } 
 variable "azure-client-secret" {
     description = "Insert your application client-secret"
-    default = "xxxxx"
-}
-variable "azure-subscription" {
-    description = "Insert your subscription-id"
     default = "xxxxx"
 }
 variable "azure-tenant" {
@@ -38,4 +33,9 @@ variable "provider-context" {
 variable "my-pub-ip" {
     description = "Put your public-ip"
     default = "x.x.x.x"
+}
+
+variable "new-policy-pkg" {
+    description = "Define the name of your azure policy package"
+    default = "pkg-azure"
 }
