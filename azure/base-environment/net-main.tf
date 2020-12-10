@@ -209,7 +209,7 @@ resource "azurerm_route_table" "rt-vnet-spoke" {
     name = "route-to-internet"
     address_prefix = "0.0.0.0/0"
     next_hop_type = local.next_hop_type_allowed_values[3]
-    next_hop_in_ip_address = "172.16.1.4"
+    next_hop_in_ip_address = var.spokes-default-gateway
   }
   route {
     name = "route-to-my-pub-ip"

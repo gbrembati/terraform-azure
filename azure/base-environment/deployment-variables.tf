@@ -41,3 +41,8 @@ variable "deploy-vmspoke" {
     type = bool
     default = true
 }
+
+variable "spokes-default-gateway" {
+    description = "This is going to be the default-gateway for your spokes subnets"
+    default = "172.16.1.4"
+}
