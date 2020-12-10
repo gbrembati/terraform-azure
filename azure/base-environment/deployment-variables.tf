@@ -26,6 +26,11 @@ variable "my-pub-ip" {
     default = "x.x.x.x/32"
 }
 
+variable "mgmt-sku-enabled" {
+    description = "Have you ever deployed a ckp management before? set to false if not"
+    type = bool
+    default = true
+}
 variable "mgmt-dns-suffix" {
     description = "This is the public DNS suffix of your mgmt FQDN"
     default = "xxxxx"
@@ -42,6 +47,11 @@ variable "deploy-vmspoke" {
     default = true
 }
 
+variable "vmspoke-sku-enabled" {
+    description = "Have you ever deployed this vm spoke before? set to false if not"
+    type = bool
+    default = true
+}
 variable "spokes-default-gateway" {
     description = "This is going to be the default-gateway for your spokes subnets"
     default = "172.16.1.4"
