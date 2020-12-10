@@ -52,6 +52,14 @@ variable "vmspoke-sku-enabled" {
     type = bool
     default = true
 }
+variable "vmspoke-usr" {
+    description = "Set the user for login to vmspoke machines"
+    default = "xxxxx"
+}
+variable "vmspoke-pwd" {
+    description = "Set the password for login to vmspoke machines"    
+    default = "xxxxx"
+}
 variable "spokes-default-gateway" {
     description = "This is going to be the default-gateway for your spokes subnets"
     default = "172.16.1.4"

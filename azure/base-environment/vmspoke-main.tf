@@ -120,8 +120,8 @@ resource "azurerm_virtual_machine" "vm-spoke" {
     }
     os_profile {
         computer_name  = "${var.vmspoke-name}-${count.index}"
-		admin_username = var.mgmt-admin-usr
-        admin_password = var.mgmt-admin-pwd
+		    admin_username = var.vmspoke-usr
+        admin_password = var.vmspoke-pwd
     }
     os_profile_linux_config {
         disable_password_authentication = false
