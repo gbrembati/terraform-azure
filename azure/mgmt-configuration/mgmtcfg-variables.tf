@@ -39,3 +39,8 @@ variable "new-policy-pkg" {
     description = "Define the name of your azure policy package"
     default = "pkg-azure"
 }
+
+variable "azure-dc-name" {
+    description = "Define the name of your azure datacenter-object"
+    default = "dc-azure"
+}

@@ -58,6 +58,6 @@ resource "checkpoint_management_publish" "post-dc-publish" {
 # Create the Azure Datacenter
 resource "checkpoint_management_run_script" "dc-azure" {
   script_name = "Install Azure DC"
-  script = "mgmt_cli add data-center-server name 'dc-azure' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' --user '${var.api-username}' --password '${var.api-password}'"
+  script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' 'dc-azure' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' --user '${var.api-username}' --password '${var.api-password}'"
   targets = [var.mgmt-name]
 }
