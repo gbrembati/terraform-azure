@@ -13,7 +13,5 @@ echo "API ready " `date`
 sleep 5
 echo "Set R80 API to accept all ip addresses"
 mgmt_cli -r true set api-settings accepted-api-calls-from "All IP addresses" --domain 'System Data'
-echo "Add user api_user with password vpn123"
-mgmt_cli -r true add administrator name "api_user" password "VPN123vpn123!" must-change-password false authentication-method "INTERNAL_PASSWORD" permissions-profile "Super User" --domain 'System Data'
 echo "Restarting API Server"
 api restart
