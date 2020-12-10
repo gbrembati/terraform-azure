@@ -34,10 +34,6 @@ variable "provider-context" {
     description = "It can be used either web_api or gaia_api"
     default= "web_api"
 }
-variable "chosen-jhf" {
-    description = "Specify the Jumbo Hotfix you want to be installed"
-    default = "Check_Point_R80_40_JUMBO_HF_Bundle_T89_sk165456_FULL.tgz"
-}
 
 variable "my-pub-ip" {
     description = "Put your public-ip"

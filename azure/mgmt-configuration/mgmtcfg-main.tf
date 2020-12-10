@@ -53,9 +53,3 @@ resource "checkpoint_management_run_script" "script-cme" {
 #  script = "xxxx"
 #  targets = [var.mgmt-name]
 #}
-
-# Patch the management to the chosen JHF
-resource "checkpoint_management_install_software_package" "install-jhf" {
-  name = var.chosen-jhf
-  depends_on = [checkpoint_management_run_script.script-cme]
-}
