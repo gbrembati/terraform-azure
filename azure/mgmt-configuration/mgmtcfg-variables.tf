@@ -54,3 +54,8 @@ variable "azure-ad-name" {
     description = "Define the name of your azure active-directory-object: used from R81"
     default = "ad-azure"
 }
+
+variable "last-jhf" {
+    description = "Provide the name of the JHF to be installed"
+    default = "Check_Point_R80_40_JUMBO_HF_Bundle_T89_sk165456_FULL.tgz"
+}

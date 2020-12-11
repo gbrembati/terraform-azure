@@ -2,7 +2,7 @@ terraform {
   required_providers {
     checkpoint = {
       source = "CheckPointSW/checkpoint"
-      version = "1.0.5"
+      version = "1.1.0"
     }
   }
 }
@@ -77,18 +77,10 @@ resource "checkpoint_management_run_script" "ad-azure" {
   targets = [var.mgmt-name]
 }
 
-# Update the CPUSE and Checks for updates
-resource "checkpoint_management_run_script" "management-update" {
-  script_name = "Update CPUSE & Check Updates"
-  script = "clish -c 'installer agent update not-interactive' \n clish -c 'installer check-for-updates not-interactive'"
-  targets = [var.mgmt-name]
-  depends_on = [checkpoint_management_run_script.dc-azure,checkpoint_management_publish.post-dc-publish]
-}
-
 # Install the latest GA Jumbo Hotfix 
-#resource "checkpoint_management_run_script" "management-jhf-install" {
-#  script_name = "Download & Install latest JHF"
-#  script = "clish -c 'installer download ' \n clish -c 'installer download-and-install 1 not-interactive'"
-#  targets = [var.mgmt-name]
-#  depends_on = [checkpoint_management_run_script.management-update]
-#}
+resource "checkpoint_management_run_script" "management-jhf-install" {
+  script_name = "Download & Install latest JHF"
+  script = "clish -c 'installer agent update not-interactive' \n clish -c 'installer check-for-updates not-interactive' \n clish -c 'installer download-and-install '${var.last-jhf}' not-interactive'"
+  targets = [var.mgmt-name]
+  depends_on = [checkpoint_management_run_script.dc-azure]
+}
