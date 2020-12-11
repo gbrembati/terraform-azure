@@ -62,7 +62,7 @@ resource "checkpoint_management_publish" "post-dc-publish" {
 # Create the Azure Datacenter
 resource "checkpoint_management_run_script" "dc-azure" {
   script_name = "Install Azure DC"
-  script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}'"
+  script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}' --version '1.6'"
   targets = [var.mgmt-name]
 }
 
@@ -70,6 +70,6 @@ resource "checkpoint_management_run_script" "dc-azure" {
 resource "checkpoint_management_run_script" "ad-azure" {
   count = var.mgmt-r81 ? 1 : 0
   script_name = "Connect Azure Active Directory"
-  script = "mgmt_cli add azure-ad name '${var.azure-ad-name}' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}'" 
+  script = "mgmt_cli add azure-ad name '${var.azure-ad-name}' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}' --version '1.7'" 
   targets = [var.mgmt-name]
 }
