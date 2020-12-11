@@ -13,6 +13,7 @@ provider "checkpoint" {
     username = var.api-username
     password = var.api-password
     context = var.provider-context
+    timeout = "180"
 }
 
 # Create the host-object with your public IP
@@ -51,6 +52,7 @@ resource "checkpoint_management_package" "azure-policy-pkg" {
   access = true
   threat_prevention = true
   color = "sky blue"
+  depends_on = [checkpoint_management_run_script.dc-azure]
 }
 
 # Publish the session after the creation of the objects
@@ -62,14 +64,31 @@ resource "checkpoint_management_publish" "post-dc-publish" {
 # Create the Azure Datacenter
 resource "checkpoint_management_run_script" "dc-azure" {
   script_name = "Install Azure DC"
-  script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}' --version '1.6'"
+  script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' comments 'Created by Terraform' --user '${var.api-username}' --password '${var.api-password}' --version '1.6'"
   targets = [var.mgmt-name]
+  depends_on = [checkpoint_management_run_script.script-cme]
 }
 
 # Create the Azure Active Directory
 resource "checkpoint_management_run_script" "ad-azure" {
   count = var.mgmt-r81 ? 1 : 0
   script_name = "Connect Azure Active Directory"
-  script = "mgmt_cli add azure-ad name '${var.azure-ad-name}' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' --user '${var.api-username}' --password '${var.api-password}' --version '1.7'" 
+  script = "mgmt_cli add azure-ad name '${var.azure-ad-name}' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'sky blue' comments 'Created by Terraform' --user '${var.api-username}' --password '${var.api-password}' --version '1.7'" 
   targets = [var.mgmt-name]
 }
+
+# Update the CPUSE and Checks for updates
+resource "checkpoint_management_run_script" "management-update" {
+  script_name = "Update CPUSE & Check Updates"
+  script = "clish -c 'installer agent update not-interactive' \n clish -c 'installer check-for-updates not-interactive'"
+  targets = [var.mgmt-name]
+  depends_on = [checkpoint_management_run_script.dc-azure,checkpoint_management_publish.post-dc-publish]
+}
+
+# Install the latest GA Jumbo Hotfix 
+#resource "checkpoint_management_run_script" "management-jhf-install" {
+#  script_name = "Download & Install latest JHF"
+#  script = "clish -c 'installer download ' \n clish -c 'installer download-and-install 1 not-interactive'"
+#  targets = [var.mgmt-name]
+#  depends_on = [checkpoint_management_run_script.management-update]
+#}
