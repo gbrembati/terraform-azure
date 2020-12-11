@@ -18,6 +18,7 @@ provider "checkpoint" {
 # Create the host-object with your public IP
 resource "checkpoint_management_host" "my-public-ip" {
   name = "my-public-ip"
+  comments = "Created by Terraform"
   ipv4_address = var.my-pub-ip
   color = "blue"
 }
@@ -25,12 +26,14 @@ resource "checkpoint_management_host" "my-public-ip" {
 # Create the dynamic-obj: LocalGatewayInternal
 resource "checkpoint_management_dynamic_object" "dyn-obj-local-int" {
   name = "LocalGatewayInternal"
+  comments = "Created by Terraform"
   color = "blue"
 }
 
 # Create the dynamic-obj: LocalGatewayExternal
 resource "checkpoint_management_dynamic_object" "dyn-obj-local-ext" {
   name = "LocalGatewayExternal"
+  comments = "Created by Terraform"
   color = "blue"
 }
 
@@ -44,6 +47,7 @@ resource "checkpoint_management_run_script" "script-cme" {
 # Create a new policy package
 resource "checkpoint_management_package" "azure-policy-pkg" {
   name = var.new-policy-pkg
+  comments = "Created by Terraform"
   access = true
   threat_prevention = true
   color = "blue"
@@ -59,5 +63,13 @@ resource "checkpoint_management_publish" "post-dc-publish" {
 resource "checkpoint_management_run_script" "dc-azure" {
   script_name = "Install Azure DC"
   script = "mgmt_cli add data-center-server name '${var.azure-dc-name}' type 'azure' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'blue' --user '${var.api-username}' --password '${var.api-password}'"
+  targets = [var.mgmt-name]
+}
+
+# Create the Azure Active Directory
+resource "checkpoint_management_run_script" "dc-azure" {
+  count = var.mgmt-r81 ? 1 : 0
+  script_name = "Connect Azure Active Directory"
+  script = "mgmt_cli add azure-ad name '${var.azure-ac-name}' authentication-method 'service-principal-authentication' application-id '${var.azure-client-id}' application-key '${var.azure-client-secret}' directory-id '${var.azure-tenant}' color 'blue' --user '${var.api-username}' --password '${var.api-password}'" 
   targets = [var.mgmt-name]
 }

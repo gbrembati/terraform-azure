@@ -44,3 +44,13 @@ variable "azure-dc-name" {
     description = "Define the name of your azure datacenter-object"
     default = "dc-azure"
 }
+
+variable "mgmt-r81" {
+    description = "Are you using Check Point Management with R81 or above?"
+    type= bool
+    default = false
+}
+variable "azure-ad-name" {
+    description = "Define the name of your azure active-directory-object: used from R81"
+    default = "ad-azure"
+}
