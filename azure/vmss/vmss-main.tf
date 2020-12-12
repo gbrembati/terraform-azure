@@ -168,3 +168,8 @@ resource "azurerm_resource_group_template_deployment" "template-deployment-vmss"
 #  targets = [var.mgmt-name]
 #  depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
 #}
+
+output "mgmt-output-fqdn" {
+  value = "Use this command to config the Management : autoprov_cfg init Azure -mn ${var.mgmt-name} -tn ${var.vmss-template} -otp ${var.vmss-sic} -ver R80.40 -po ${var.new-policy-pkg} -cn ${var.mgmt-controller} -sb ${var.azure-subscription} -at ${var.azure-tenant} -aci ${var.azure-client-id} -acs ${var.azure-client-secret}"
+  depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
+}
