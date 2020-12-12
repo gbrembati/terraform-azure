@@ -31,21 +31,27 @@ variable "vmss-version" {
 }
 
 variable vmss-name {
+    description = "Specify the name of the Scale-set"
     default = "cpvmss"
 }
 variable vmss-password {
+    description = "Specify the password for the Scale-set VMs"
     default = "xxxxx"
 }
 variable vmss-max-members {
+    description = "Set the maximum number of instances"
     default = "3"
 }
 variable vmss-vnet {
+    description = "Put the name of the vnet w/o the first V"
     default = "net-north"
 }
 variable vmss-template {
+    description = "Specify CME template name"
     default = "az-template"
 }
 variable vmss-admin-alert {
+    description = "Specify the email to be notified in case of Scale in/out event"
     default = "xxxxx"
 }
 variable vmss-remoteaccess {
@@ -61,19 +67,24 @@ variable vmss-dns-host-a {
     default = ""
 }
 variable "office-mode-net" {
+    description = "Set the pool used with the office mode"
     default = "172.16.111.0/24"
 }
 variable "encryption-domain" {
+    description = "Set the networks to be included in the encryption domain"
     default = "xxxxx"
 }
 variable "vpn-dns" {
+    description = "Set the dns servers applied from the endpoint client"
     default = "xxxxx"
 }
 
 variable vmss-vmsize {
+    description = "Set the vmss machine size"
     default = "Standard_DS2_v2"
 }
 variable vmss-sic {
+    description = "Set the SIC that needs to be used from the management"
     default = "xxxxx"
 }
 
@@ -100,5 +111,6 @@ variable "new-policy-pkg" {
     default = "pkg-azure"
 }
 variable "mgmt-controller" {
+    description = "Define the name of the CME controller"
     default = "azurectrl"
 }
