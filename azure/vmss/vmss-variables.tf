@@ -42,6 +42,11 @@ variable vmss-max-members {
     description = "Set the maximum number of instances"
     default = "3"
 }
+variable vmss-zones-number {
+    description = "Set the desired number of Availability Zone to be used"
+    default = "2"
+}
+
 variable vmss-vnet {
     description = "Put the name of the vnet w/o the first V"
     default = "net-north"
