@@ -79,7 +79,7 @@ resource "azurerm_resource_group_template_deployment" "template-deployment-vmss"
         },
         "availabilityZonesNum": { 
             "value": "${var.vmss-zones-number}" 
-        },,
+        },
         "remoteAccessVpn": { 
             "value": "${var.vmss-remoteaccess}" 
         },
