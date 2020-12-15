@@ -44,7 +44,7 @@ variable vmss-max-members {
 }
 variable vmss-zones-number {
     description = "Set the desired number of Availability Zone to be used"
-    default = "2"
+    default = 0
 }
 
 variable vmss-vnet {
@@ -57,30 +57,6 @@ variable vmss-template {
 }
 variable vmss-admin-alert {
     description = "Specify the email to be notified in case of Scale in/out event"
-    default = "xxxxx"
-}
-variable vmss-remoteaccess {
-    description = "Choose if you want remote-access | yes or no"
-    default = "no"
-}
-variable vmss-dns-resource-id {
-    description = "If choosen no in the vmss-remoteaccess var leave it blank"
-    default = ""
-}
-variable vmss-dns-host-a {
-    description = "If choosen no in the vmss-remoteaccess var leave it blank"
-    default = ""
-}
-variable "office-mode-net" {
-    description = "Set the pool used with the office mode"
-    default = "172.16.111.0/24"
-}
-variable "encryption-domain" {
-    description = "Set the networks to be included in the encryption domain"
-    default = "xxxxx"
-}
-variable "vpn-dns" {
-    description = "Set the dns servers applied from the endpoint client"
     default = "xxxxx"
 }
 

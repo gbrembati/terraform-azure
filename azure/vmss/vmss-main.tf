@@ -78,16 +78,7 @@ resource "azurerm_resource_group_template_deployment" "template-deployment-vmss"
             "value": "Default" 
         },
         "availabilityZonesNum": { 
-            "value": "${var.vmss-zones-number}" 
-        },
-        "remoteAccessVpn": { 
-            "value": "${var.vmss-remoteaccess}" 
-        },
-        "dnsZoneResourceId": { 
-            "value": "${var.vmss-dns-resource-id}"
-        },
-        "dnsZoneRecordSetName": {
-            "value": "${var.vmss-dns-host-a}"
+            "value": ${var.vmss-zones-number}
         },
         "customMetrics": {
             "value": "yes"
@@ -145,31 +136,18 @@ resource "azurerm_resource_group_template_deployment" "template-deployment-vmss"
 }
 
 # Connecting to ckpmgmt
-#provider "checkpoint" {
-#    server = var.mgmt-ip
-#    username = var.api-username
-#    password = var.api-password
-#    context = var.provider-context
-#    timeout = "180"
-#}
+provider "checkpoint" {
+    server = var.mgmt-ip
+    username = var.api-username
+    password = var.api-password
+    context = var.provider-context
+    timeout = "180"
+}
 
 # Configure the CME: autoprov-cfg service 
-#resource "checkpoint_management_run_script" "management-jhf-install" {
-#  script_name = "CME Configuration for VMSS"
-#  script = "autoprov_cfg init Azure -mn ${var.mgmt-name} -tn ${var.vmss-template} -otp ${var.vmss-sic} -ver R80.40 -po ${var.new-policy-pkg} -cn ${var.mgmt-controller} -sb ${var.azure-subscription} -at ${var.azure-tenant} -aci ${var.azure-client-id} -acs ${var.azure-client-secret}"
-#  targets = [var.mgmt-name]
-#  depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
-#}
-
-# Configure the CME: autoprov-cfg service w/ remote-access
-#resource "checkpoint_management_run_script" "management-jhf-install" {
-#  script_name = "Download & Install latest JHF"
-#  script = "autoprov_cfg init Azure -mn '${var.mgmt-name}' -tn '${var.vmss-template} -otp '${var.vmss-sic} -ver R80.40 -po '${var.new-policy-pkg}' -cn '${var.mgmt-controller}' -sb '${var.azure-subscription}' -at '${var.azure-tenant}' -aci '${var.azure-client-id}' -acs '${var.azure-client-secret}' -om '${var.office-mode-net}' -ed '${var.encryption-domain} -dns '${var.vpn-dns}'"
-#  targets = [var.mgmt-name]
-#  depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
-#}
-
-output "mgmt-output-fqdn" {
-  value = "Use this command to config the Management : autoprov_cfg init Azure -mn ${var.mgmt-name} -tn ${var.vmss-template} -otp ${var.vmss-sic} -ver R80.40 -po ${var.new-policy-pkg} -cn ${var.mgmt-controller} -sb ${var.azure-subscription} -at ${var.azure-tenant} -aci ${var.azure-client-id} -acs ${var.azure-client-secret}"
+resource "checkpoint_management_run_script" "management-cme-config" {
+  script_name = "CME Configuration for VMSS"
+  script = "yes | autoprov_cfg init Azure -mn ${var.mgmt-name} -tn ${var.vmss-template} -otp ${var.vmss-sic} -ver R80.40 -po ${var.new-policy-pkg} -cn ${var.mgmt-controller} -sb ${var.azure-subscription} -at ${var.azure-tenant} -aci ${var.azure-client-id} -acs ${var.azure-client-secret}"
+  targets = [var.mgmt-name]
   depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
 }
