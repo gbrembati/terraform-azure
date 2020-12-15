@@ -61,7 +61,7 @@ variable vmss-admin-alert {
 }
 variable vmss-remoteaccess {
     description = "Choose if you want remote-access | yes or no"
-    default = "no"
+    default = "yes"
 }
 variable vmss-dns-resource-id {
     description = "If choosen no in the vmss-remoteaccess var leave it blank"
