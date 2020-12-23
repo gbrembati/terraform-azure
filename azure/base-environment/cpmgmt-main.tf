@@ -103,16 +103,14 @@ resource "azurerm_network_interface" "nic-ckpmgmt" {
     resource_group_name = "rg-${var.mgmt-name}"
     enable_ip_forwarding = "false"
   
-	ip_configuration {
-        name = "${var.mgmt-name}-eth0-config"
-        subnet_id = azurerm_subnet.net-secmgmt.id
-        private_ip_address_allocation = "Static"
-		private_ip_address = "172.16.8.4"
-        primary = true
-		public_ip_address_id = azurerm_public_ip.pub-ckpmgmt.id
+	  ip_configuration {
+      name = "${var.mgmt-name}-eth0-config"
+      subnet_id = azurerm_subnet.net-secmgmt.id
+      private_ip_address_allocation = "Dynamic"
+      primary = true
+		  public_ip_address_id = azurerm_public_ip.pub-ckpmgmt.id
     }
-    depends_on = [azurerm_public_ip.pub-ckpmgmt,azurerm_subnet.net-secmgmt,
-                azurerm_network_security_group.nsg-ckpmgmt]
+    depends_on = [azurerm_public_ip.pub-ckpmgmt,azurerm_subnet.net-secmgmt,azurerm_network_security_group.nsg-ckpmgmt]
 }
 
 resource "azurerm_network_interface_security_group_association" "nsg-assoc-nic-ckpmgmt" {
