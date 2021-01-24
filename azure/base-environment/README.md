@@ -1,7 +1,8 @@
 # Azure BluePrint Architecture
 This Terraform project is intended to be used as a template in a demonstration or to build a test environment.  
-What it does is creating an infrastructure composed of a North-hub and South-hub and few spokes (the number can be changed).   
-This projects makes use of the __*azurerm*__ providers.
+What it does is creating an infrastructure composed of a North-hub and South-hub and few spokes (the number can be changed).    
+As per my deployments (made in France Central), this project creates all of the following in less than __5 minutes__.   
+
 
 ## Which are the components created?
 The project creates the following resources and combine them:
@@ -16,6 +17,9 @@ The project creates the following resources and combine them:
 9. **Virtual machines**: A Check Point R80.40 Management and nginx machines in the spokes 
 10. **Public IPs**: associated with the management and the spoke VMs)
 11. **Set the FQDN** with a schema: pub-"vmname"-"specified-suffix"."azure-location".cloudapp.azure.com
+
+## Which are the outputs of the project?
+The project gives the following outputs once is created
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
