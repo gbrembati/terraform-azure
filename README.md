@@ -1,9 +1,6 @@
 # Terraform Projects
 This repository is a collection of Terraform automation projects, each of them is intended to be used as a template in a demonstration or to build a test environment.  In the directories, you will find a description of what the each project does and if you want (or need) to customize them, you can change defaults in the different __*name-variables.tf*__ files. 
 
-## Do you want to see more? 
-Check the Check Point official Repository here: [CheckPointSW / CloudGuardIaaS / terraform](https://github.com/CheckPointSW/CloudGuardIaaS/tree/master/terraform)
-
 ## Which are the projects available?
 The projects can be briefly described as follows:
 1. **azure/base-environment**: It creates an environment based on the CloudGuard Blueprint's design principles
@@ -11,6 +8,8 @@ The projects can be briefly described as follows:
 3. **azure/vmss**: It creates a Virtual-Machine Scale-Sets to be used as outbound / inbound / east-west protection
 4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
 
+## Do you want to see more? 
+Check the Check Point official CloudGuard IaaS repository here: [CheckPointSW / CloudGuardIaaS](https://github.com/CheckPointSW/CloudGuardIaaS)
 
 ## How do you use these projects?
 The first thing that you need to do is download this repository, either via "*git clone*" or "*download as ZIP*".  
