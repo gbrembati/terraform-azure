@@ -13,6 +13,7 @@ vmss-sku-enabled        = true
 vmss-version            = "r8040"
 vmss-name               = "xxxxx"
 vmss-password           = "xxxxx"
+vmss-min-members        = "x"
 vmss-max-members        = "x"
 vmss-zones-number       = "x"
 vmss-vnet               = "xxxxx"

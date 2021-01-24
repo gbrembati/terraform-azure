@@ -48,7 +48,7 @@ resource "azurerm_resource_group_template_deployment" "template-deployment-vmss"
             "value": "${var.vmss-name}" 
         },
         "instanceCount": { 
-            "value": "2"
+            "value": "${var.vmss-min-members}" 
         },
         "maxInstanceCount": { 
             "value": "${var.vmss-max-members}" 
