@@ -1,18 +1,18 @@
 variable "azure-client-id" {
     description = "Insert your application client-id"
-    default = "xxxxx"
+    sensitive = true
 } 
 variable "azure-client-secret" {
     description = "Insert your application client-secret"
-    default = "xxxxx"
+    sensitive = true
 }
 variable "azure-subscription" {
     description = "Insert your subscription-id"
-    default = "xxxxx"
+    sensitive = true
 }
 variable "azure-tenant" {
     description = "Insert your active-directory-id"
-    default = "xxxxx"
+    sensitive = true
 }
 
 variable "location" {
@@ -36,7 +36,7 @@ variable vmss-name {
 }
 variable vmss-password {
     description = "Specify the password for the Scale-set VMs"
-    default = "xxxxx"
+    sensitive = true
 }
 variable vmss-max-members {
     description = "Set the maximum number of instances"
@@ -57,7 +57,6 @@ variable vmss-template {
 }
 variable vmss-admin-alert {
     description = "Specify the email to be notified in case of Scale in/out event"
-    default = "xxxxx"
 }
 
 variable vmss-vmsize {
@@ -66,7 +65,7 @@ variable vmss-vmsize {
 }
 variable vmss-sic {
     description = "Set the SIC that needs to be used from the management"
-    default = "xxxxx"
+    sensitive = true
 }
 
 variable "mgmt-name" {
@@ -75,13 +74,12 @@ variable "mgmt-name" {
 }
 variable "mgmt-ip" {
     description = "Put the public IP address of your management"
-    default= "xx.xx.xx.xx"
 }
 variable "api-username" {
     default= "admin"
 }
 variable "api-password" {
-    default= "xxxxx"
+    sensitive = true
 }
 variable "provider-context" {
     description = "It can be used either web_api or gaia_api"
