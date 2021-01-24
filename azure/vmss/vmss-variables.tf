@@ -38,9 +38,13 @@ variable vmss-password {
     description = "Specify the password for the Scale-set VMs"
     sensitive = true
 }
+variable vmss-min-members {
+    description = "Set the maximum number of instances"
+    default = "2"
+}
 variable vmss-max-members {
     description = "Set the maximum number of instances"
-    default = "3"
+    default = "5"
 }
 variable vmss-zones-number {
     description = "Set the desired number of Availability Zone to be used"
