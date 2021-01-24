@@ -43,7 +43,7 @@ vmspoke-usr             = "xxxxx"
 vmspoke-pwd             = "xxxxx"
 spokes-default-gateway  = "172.16.1.4" 
 ```
-If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files.
+If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files. Here you will also able to find the descriptions that explains what each variable is used for.
 
 ## The infrastruction created with the following design:
 ![Architectural Design](/images/schema-base-env.jpg)
