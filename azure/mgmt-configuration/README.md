@@ -14,7 +14,7 @@ The project creates the following resources and combine them:
 6. **Update to a specified JHF**: it downloads and installs a specific Jumbo-Hotfix (by default : R80.40 Jumbo HotFix Take 89)
 
 ## Which are the outputs of the project?
-The projects doesn't give specific CLI outputs, the results of this script are visible on the management server (and the objects created visible thanks to the SmartConsole).
+The projects doesn't give specific CLI outputs, the results of this script are visible on the management server (and the objects created visible via SmartConsole).
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
