@@ -31,7 +31,14 @@ azure-accounts  =  {
     "0" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #   "1" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #   "2" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
-  } 
+  }
+
+aws-op-mode   = "ReadOnly"
+aws-accounts = {
+        "0" = ["NAME","ARN","SECRET"]
+#       "1" = ["NAME","ARN","SECRET"]
+#       "2" = ["NAME","ARN","SECRET"]        
+    } 
 ```
 If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files.   
 Here you will also able to find the descriptions that explains what each variable is used for.

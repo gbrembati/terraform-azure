@@ -10,3 +10,10 @@ azure-accounts  =  {
 #   "1" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #   "2" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
   }
+
+aws-op-mode   = "ReadOnly"
+aws-accounts = {
+        "0" = ["NAME","ARN","SECRET"]
+#       "1" = ["NAME","ARN","SECRET"]
+#       "2" = ["NAME","ARN","SECRET"]        
+    }

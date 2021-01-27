@@ -26,7 +26,6 @@ locals { // locals for 'azure-op-mode' allowed values
     // will fail if [var.azure-op-mode] is invalid:
     validate_azure-op-mode = index(local.azure-op-mode_allowed_values, var.azure-op-mode)
 }
-
 variable "azure-accounts" {
     description = "Insert here your Azure Subscriptions details"
     sensitive = true
@@ -34,5 +33,25 @@ variable "azure-accounts" {
         "0" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #       "1" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #       "2" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
+    }
+}
+
+variable "aws-op-mode" {
+    description = "Choose in which operating mode you want your AWS accounts to work"
+    type = string
+    default = "ReadOnly"
+}
+locals { // locals for 'azure-op-mode' allowed values
+    aws-op-mode_allowed_values = ["ReadOnly", "FullManage", "Reset"]
+    // will fail if [var.aws-op-mode] is invalid:
+    validate_aws-op-mode = index(local.aws-op-mode_allowed_values, var.aws-op-mode)
+}
+variable "aws-accounts" {
+    description = "Insert here your AWS Subscriptions details"
+    sensitive = true
+    default = {
+        "0" = ["NAME","ARN","SECRET"]
+#       "1" = ["NAME","ARN","SECRET"]
+#       "2" = ["NAME","ARN","SECRET"]        
     }
 }
