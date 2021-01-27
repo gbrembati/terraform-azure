@@ -9,6 +9,9 @@ As first you will need to have a CloudGuard CSPM account, if you dont have it, y
 2. Create an account in [Asia Pacific Region](https://secure.ap1.dome9.com/v2/register/invite)
 3. Create an account in [United States Region](https://secure.dome9.com/v2/register/invite)
 
+## Get API credentials in your CPSM Portal
+Then you will need to get the API credentials that you will be using with Terraform to onboard the accounts.
+![Architectural Design](/images/create-cpsm-api.jpg)
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
