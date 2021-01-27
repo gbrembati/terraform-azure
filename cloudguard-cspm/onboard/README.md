@@ -14,7 +14,7 @@ Then you will need to get the API credentials that you will be using with Terraf
 
 ![Architectural Design](/images/create-cpsm-api.jpg)
 
-Remember to copy these two values, you will need to enter them in the *.tfvars* file later on.
+Remember to copy these two values, you will need to enter them as **cspm-key-id** and **cspm-key-secret** later on.
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
