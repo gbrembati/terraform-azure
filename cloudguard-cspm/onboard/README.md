@@ -1,6 +1,6 @@
-# Work in Progress
+# !!! Work in Progress !!!
 # Check Point CPSM Configuration
-This Terraform project is intended to be used to onboard multiple Public Cloud account (Azure/AWS/GCP) in one-shot.
+This Terraform project is intended to be used to onboard multiple Public Cloud accounts (Azure/AWS/GCP) in one-shot.    
 What it does is configuring through API (with **Terraform**) an existing CloudGuard CSPM Portal.      
  
 ## How to start?
