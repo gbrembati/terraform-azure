@@ -72,8 +72,8 @@ variable "k8s-onboard" {
 variable k8s-clusters {
     description = "Specify the name of the Clusters to onboard"   
     default = {
-        "0" = "K8s-Cluster-1"
-#       "1" = "K8s-Cluster-2"
-#       "2" = "K8s-Cluster-3"
+        "0" = "K8s-Cluster-Name-1"
+#       "1" = "K8s-Cluster-Name-2"
+#       "2" = "K8s-Cluster-Name-3"
     }
 }
