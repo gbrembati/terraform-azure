@@ -1,13 +1,11 @@
 variable "cspm-key-id" {
     description = "Insert your API Key ID"
     type = string
-    sensitive = true
     default = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 variable "cspm-key-secret" {
     description = "Insert your API Key Secret"
     type = string
-    sensitive = true
     default = "xxxxxxxxxxxxxxxxxxxx"
 }
 variable "cspm-org-unit" {
@@ -63,5 +61,19 @@ variable "aws-accounts" {
         "0" = ["NAME","ARN","SECRET"]
 #       "1" = ["NAME","ARN","SECRET"]
 #       "2" = ["NAME","ARN","SECRET"]        
+    }
+}
+
+variable "k8s-onboard" {
+    description = "Do you need to onboard K8s Clusters?"
+    type = bool
+    default = true
+}   
+variable k8s-clusters {
+    description = "Specify the name of the Clusters to onboard"   
+    default = {
+        "0" = "K8s-Cluster-1"
+#       "1" = "K8s-Cluster-2"
+#       "2" = "K8s-Cluster-3"
     }
 }

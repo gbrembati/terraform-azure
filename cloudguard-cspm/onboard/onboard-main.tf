@@ -30,8 +30,8 @@ resource "dome9_cloudaccount_azure" "onboard-az-account" {
   client_id              = lookup(var.azure-accounts,count.index)[3]
   client_password        = lookup(var.azure-accounts,count.index)[4]
 
- organizational_unit_id = dome9_organizational_unit.my-org-unit.id
- depends_on = [dome9_organizational_unit.my-org-unit]
+  organizational_unit_id = dome9_organizational_unit.my-org-unit.id
+  depends_on = [dome9_organizational_unit.my-org-unit]
 }
 
 # Onboarding of your AWS Accounts
@@ -129,4 +129,16 @@ resource "dome9_cloudaccount_aws" "onboard-aws-account" {
     }
   }
   depends_on = [dome9_organizational_unit.my-org-unit]
+}
+
+resource "dome9_cloudaccount_kubernetes" "onboard-k8s-clusters" {
+  count = var.k8s-onboard ? length(var.k8s-clusters) : 0
+  name  = lookup(var.k8s-clusters, count.index)
+  organizational_unit_id = dome9_organizational_unit.my-org-unit.id
+  depends_on = [dome9_organizational_unit.my-org-unit]
+}
+
+output "onboard-k8s-instruction" {
+  value = join("\n\n",formatlist(" Use this command on K8s Cluster: %s \n  helm repo add checkpoint https://raw.githubusercontent.com/CheckPointSW/charts/master/repository/ \n  helm install asset-mgmt checkpoint/cp-resource-management --set credentials.user=${var.cspm-key-id} --set credentials.secret=${var.cspm-key-secret} --set clusterID=%s --namespace checkpoint --create-namespace", flatten(values(var.k8s-clusters)), dome9_cloudaccount_kubernetes.onboard-k8s-clusters[*].id))
+  depends_on = [dome9_cloudaccount_kubernetes.onboard-k8s-clusters]
 }

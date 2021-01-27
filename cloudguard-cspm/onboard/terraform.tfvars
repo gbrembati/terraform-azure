@@ -19,3 +19,10 @@ aws-accounts  = {
 #       "1" = ["NAME","ARN","SECRET"]
 #       "2" = ["NAME","ARN","SECRET"]        
     }
+
+k8s-onboard   = true
+k8s-clusters  = {
+        "0" = "K8s-Cluster-1"
+#       "1" = "K8s-Cluster-2"
+#       "2" = "K8s-Cluster-3"
+    }
