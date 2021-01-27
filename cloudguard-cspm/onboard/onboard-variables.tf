@@ -27,7 +27,7 @@ variable "azure-op-mode" {
     default = "Read-Only"
 }
 locals { // locals for 'azure-op-mode' allowed values
-    azure-op-mode_allowed_values = ["Managed", "Read-Only"]
+    azure-op-mode_allowed_values = ["Managed", "Read"]
     // will fail if [var.azure-op-mode] is invalid:
     validate_azure-op-mode = index(local.azure-op-mode_allowed_values, var.azure-op-mode)
 }

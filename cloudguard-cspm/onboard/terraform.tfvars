@@ -5,7 +5,7 @@ cspm-key-secret = "xxxxxxxxxxxxxxxxxxxx"
 cspm-org-unit   = "My Organization Unit"
 
 azure-onboard   = true
-azure-op-mode   = "Read-Only"
+azure-op-mode   = "Read"
 azure-accounts  =  {
     "0" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #   "1" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]

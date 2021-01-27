@@ -16,34 +16,34 @@ provider "dome9" {
 # Create a dedicated Org-unit under the root one
 resource "dome9_organizational_unit" "my-org-unit" {
   name      = var.cspm-org-unit
-# parent_id = "00000000-0000-0000-0000-000000000000"
+  parent_id = "00000000-0000-0000-0000-000000000000"
 }
 
 # Onboarding of your Azure Accounts
 resource "dome9_cloudaccount_azure" "onboard-az-account" {
   count = var.azure-onboard ? length(var.azure-accounts) : 0
 
-  name                   = lookup(var.azure-accounts, count.index)[0]
+  name                   = lookup(var.azure-accounts,count.index)[0]
   operation_mode         = var.azure-op-mode
-  subscription_id        = lookup(var.azure-accounts, count.index)[1]
-  tenant_id              = lookup(var.azure-accounts, count.index)[2]
-  client_id              = lookup(var.azure-accounts, count.index)[3]
-  client_password        = lookup(var.azure-accounts, count.index)[4]
-  organizational_unit_id = dome9_organizational_unit.my-org-unit.id
+  subscription_id        = lookup(var.azure-accounts,count.index)[1]
+  tenant_id              = lookup(var.azure-accounts,count.index)[2]
+  client_id              = lookup(var.azure-accounts,count.index)[3]
+  client_password        = lookup(var.azure-accounts,count.index)[4]
 
-  depends_on = [dome9_organizational_unit.my-org-unit]
+ organizational_unit_id = dome9_organizational_unit.my-org-unit.id
+ depends_on = [dome9_organizational_unit.my-org-unit]
 }
 
 # Onboarding of your AWS Accounts
-resource "dome9_cloudaccount_AWS" "onboard-aws-account" {
+resource "dome9_cloudaccount_aws" "onboard-aws-account" {
   count = var.aws-onboard ? length(var.aws-accounts) : 0
-  
+ 
   name  = lookup(var.aws-accounts, count.index)[0]
   credentials  {
-    ARN    = lookup(var.aws-accounts, count.index)[1]
+    arn    = lookup(var.aws-accounts, count.index)[1]
     secret = lookup(var.aws-accounts, count.index)[2]
     type   = "RoleBased"
-  }
+  } 
   organizational_unit_id = dome9_organizational_unit.my-org-unit.id
 
   net_sec {
@@ -86,7 +86,7 @@ resource "dome9_cloudaccount_AWS" "onboard-aws-account" {
     regions {
       new_group_behavior = var.aws-op-mode
       region             = "ap_northeast_2"
-    }
+    }	
     regions {
       new_group_behavior = var.aws-op-mode
       region             = "ap_south_1"
