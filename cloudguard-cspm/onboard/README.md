@@ -1,4 +1,3 @@
-# !!! Work in Progress !!!
 # Check Point CPSM Configuration
 This Terraform project is intended to be used to onboard multiple Public Cloud accounts (Azure/AWS/GCP) in one-shot.    
 What it does is configuring through API (with **Terraform**) an existing CloudGuard CSPM Portal.      
@@ -27,7 +26,7 @@ cspm-key-secret = "xxxxxxxxxxxxxxxxxxxx"
 cspm-org-unit   = "My Organization Unit"
 
 azure-onboard   = true
-azure-op-mode   = "Read-Only"
+azure-op-mode   = "Read"
 azure-accounts  =  {
     "0" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
 #   "1" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
