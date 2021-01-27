@@ -4,6 +4,7 @@ cspm-key-secret = "xxxxxxxxxxxxxxxxxxxx"
 
 cspm-org-unit   = "My Organization Unit"
 
+azure-onboard   = true
 azure-op-mode   = "Read-Only"
 azure-accounts  =  {
     "0" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
@@ -11,8 +12,9 @@ azure-accounts  =  {
 #   "2" = ["NAME","SUBSCRIPTION ID","TENANT ID","CLIENT ID","CLIENT PASSWORD"]
   }
 
+aws-onboard   = true
 aws-op-mode   = "ReadOnly"
-aws-accounts = {
+aws-accounts  = {
         "0" = ["NAME","ARN","SECRET"]
 #       "1" = ["NAME","ARN","SECRET"]
 #       "2" = ["NAME","ARN","SECRET"]        

@@ -16,6 +16,11 @@ variable "cspm-org-unit" {
     default = "My Organization"
 }
 
+variable "azure-onboard" {
+    description = "Do you need to onboard Azure accounts?"
+    type = bool
+    default = true
+}
 variable "azure-op-mode" {
     description = "Choose in which operating mode you want your Azure accounts to work"
     type = string
@@ -36,6 +41,11 @@ variable "azure-accounts" {
     }
 }
 
+variable "aws-onboard" {
+    description = "Do you need to onboard AWS accounts?"
+    type = bool
+    default = true
+}
 variable "aws-op-mode" {
     description = "Choose in which operating mode you want your AWS accounts to work"
     type = string

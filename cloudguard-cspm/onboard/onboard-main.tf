@@ -21,7 +21,7 @@ resource "dome9_organizational_unit" "my-org-unit" {
 
 # Onboarding of your Azure Accounts
 resource "dome9_cloudaccount_azure" "onboard-az-account" {
-  count = length(var.azure-accounts)
+  count = var.azure-onboard ? length(var.azure-accounts) : 0
 
   name                   = lookup(var.azure-accounts, count.index)[0]
   operation_mode         = var.azure-op-mode
@@ -36,7 +36,7 @@ resource "dome9_cloudaccount_azure" "onboard-az-account" {
 
 # Onboarding of your AWS Accounts
 resource "dome9_cloudaccount_AWS" "onboard-aws-account" {
-  count = length(var.aws-accounts)
+  count = var.aws-onboard ? length(var.aws-accounts) : 0
   
   name  = lookup(var.aws-accounts, count.index)[0]
   credentials  {
