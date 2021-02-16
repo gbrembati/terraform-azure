@@ -1,0 +1,414 @@
+metadataVersion: v1
+description:
+  author:
+    title: Check Point Software Technologies
+    descriptionHtml: >-
+      Check Point Software Technologies Ltd., the largest pure-play security
+      vendor globally, provides industry-leading solutions, and protects
+      customers from cyberattacks with an unmatched catch rate of malware and
+      other types of attacks. Check Point offers a complete security
+      architecture defending enterprises networks to mobile devices, in addition
+      to the most comprehensive and intuitive security management.
+    shortDescription: >-
+      Check Point Software Technologies Ltd., the largest pure-play security
+      vendor globally
+    url: 'https://www.checkpoint.com/'
+  descriptionHtml: >-
+    <p>Check Point CloudGuard for Google Cloud Platform seamlessly extends
+    advanced, multi-layered security to protect assets in the cloud from attacks
+    while enabling secure connectivity from enterprise networks to the Google
+    cloud (hybrid networks).</p>
+
+    <p>Designed for the dynamic security requirements of cloud deployments,
+    CloudGuard IaaS provides advanced threat protections to inspect traffic
+    entering and leaving private subnets in the Cloud Virtual Network. Fully
+    integrated security features include: Firewall, IPS, Application Control,
+    IPsec VPN, Antivirus, Anti-Bot.</p>
+
+    <p>Manage CloudGuard for Google Cloud Platform from the cloud or via your
+    existing on-premise Check Point Unified Security Management Solution.
+    Enforce a consistent security policy for corporate assets in both your
+    public cloud and on-premise infrastructure from a single console.</p>
+
+    <p>Get visibility and enforcement across your cloud and on-premise
+    infrastructure using the Smart Event Software Blade. Simplify compliance and
+    audits with unified logs and reporting.</p>
+
+    <p>CloudGuard IaaS provides consistent security policy management,
+    enforcement, and reporting, making migration to the Google cloud
+    painless.</p>
+
+    <p>A 15 day evaluation license is included</p>
+  logo: '@media/check-point-130x130.png'
+  tagline: Confidently extend advanced security to the public cloud
+  title: Check Point CloudGuard IaaS Firewall & Threat Prevention (BYOL)
+  url: 'https://www.checkpoint.com/products/iaas-public-cloud-security/'
+  version: 'R80.30, R80.40, R81'
+  support:
+    - title: Support
+      descriptionHtml: >-
+        To open a support ticket, you would need to have a Check Point user
+        center account.
+
+        If you do not have a user center account, you can sign up for one here:
+        https://accounts.checkpoint.com/
+      showSupportId: false
+      url: 'http://www.checkpoint.com/services/contact/'
+  documentations:
+    - title: Checkpoint last updates
+      url: >-
+        https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk147032
+      description: >-
+        Check Point recommends staying up-to-date with CloudGuard for GCP latest
+        updates
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_POST_DEPLOY
+    - title: Reference Architecture
+      url: >-
+        https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk114577
+      description: CloudGuard IaaS reference architecture for Google Cloud Platform
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_POST_DEPLOY
+  softwareGroups:
+    - type: SOFTWARE_GROUP_OS
+      software:
+        - title: Redhat
+          version: '7.6'
+  eulaUrl: 'https://www.checkpoint.com/download_agreement.html'
+input:
+  sections:
+    - name: NETWORKING
+      title: Networking
+    - name: CHECKPOINT
+      title: Check Point
+    - name: ADVANCED
+      title: Advanced
+    - name: NETWORKING-OPTIONAL
+      title: Additional Network Interfaces
+      subtext: >
+        Multiple network interfaces deployment is described in <a
+        href="https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk121637">sk121637
+        - Deploy a CloudGuard for GCP with Multiple Network Interfaces</a>.
+  properties:
+    - name: zone
+      title: Zone
+    - name: machineType
+      title: Machine type
+    - name: network
+      title: Network
+      section: NETWORKING
+    - name: subnetwork
+      title: Subnetwork
+      section: NETWORKING
+    - name: network_enableTcp
+      title: Allow TCP traffic from the Internet on all ports
+      section: NETWORKING
+    - name: network_tcpSourceRanges
+      title: Source IP ranges for TCP traffic
+      tooltip: >-
+        Traffic is only allowed from sources within these IP address ranges. Use
+        CIDR notation when entering ranges. For gateway all ports are allowed.
+        For management allowed ports are:
+        257,18191,18210,18264,22,443,18190,19009 <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: network_enableGwNetwork
+      title: The network in which managed gateways reside.
+      section: NETWORKING
+    - name: network_gwNetworkSourceRanges
+      title: Source IP ranges for gateways network
+      tooltip: >-
+        Management only. Traffic is only allowed from gateways within these
+        sources IP address ranges. Use CIDR notation when entering ranges. The
+        following ports will open: 257,18191,18210,18264 <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: network_enableIcmp
+      title: Allow ICMP traffic from the Internet on all ports
+      section: NETWORKING
+    - name: network_icmpSourceRanges
+      title: Source IP ranges for ICMP traffic
+      tooltip: >-
+        Traffic is only allowed from sources within these IP address ranges. Use
+        CIDR notation when entering ranges. For gateway only. <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: network_enableUdp
+      title: Allow UDP traffic from the Internet on all ports
+      section: NETWORKING
+    - name: network_udpSourceRanges
+      title: Source IP ranges for UDP traffic
+      tooltip: >-
+        Traffic is only allowed from sources within these IP address ranges. Use
+        CIDR notation when entering ranges. For gateway only - all ports are
+        allowed. <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: network_enableSctp
+      title: Allow SCTP traffic from the Internet on all ports
+      section: NETWORKING
+    - name: network_sctpSourceRanges
+      title: Source IP ranges for SCTP traffic
+      tooltip: >-
+        Traffic is only allowed from sources within these IP address ranges. Use
+        CIDR notation when entering ranges. For gateway only - all ports are
+        allowed. <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: network_enableEsp
+      title: Allow ESP traffic from the Internet on all ports
+      section: NETWORKING
+    - name: network_espSourceRanges
+      title: Source IP ranges for ESP traffic
+      tooltip: >-
+        Traffic is only allowed from sources within these IP address ranges. Use
+        CIDR notation when entering ranges. For gateway only. <a
+        href="https://cloud.google.com/compute/docs/networking#firewalls">Learn
+        more</a>
+      placeholder: '0.0.0.0/0, 192.169.0.0/24'
+      section: NETWORKING
+    - name: externalIP
+      title: External IP address
+      tooltip: >-
+        An external IP address associated with this instance. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING
+    - name: installationType
+      title: Installation Type
+      section: CHECKPOINT
+    - name: diskType
+      title: Disk type
+      section: ADVANCED
+      level: 1
+    - name: bootDiskSizeGb
+      title: Disk size in GB
+      section: ADVANCED
+      level: 1
+    - name: generatePassword
+      title: Automatically generate an administrator password
+      section: ADVANCED
+      level: 1
+    - name: allowUploadDownload
+      title: Allow download from/upload to Check Point
+      tooltip: >
+        Automatically download Blade Contracts and other important data. Improve
+        product experience by sending data to Check Point.
+      section: ADVANCED
+      level: 1
+    - name: enableMonitoring
+      title: Enable Stackdriver monitoring
+      section: ADVANCED
+    - name: shell
+      title: Admin shell
+      section: ADVANCED
+      level: 1
+    - name: instanceSSHKey
+      title: Public SSH key for the user 'admin'
+      validation: Please enter a valid SSH public key or leave empty
+      section: ADVANCED
+      level: 1
+    - name: sicKey
+      title: SIC key
+      tooltip: >
+        Secure Internal Communication (SIC) Activation key. If not provided and
+        needed, a key will be automatically generated
+      validation: 'If not empty, at least 8 alpha numeric characters'
+      section: ADVANCED
+      level: 1
+    - name: managementGUIClientNetwork
+      title: Allowed GUI clients
+      tooltip: >
+        Management only. Allow only web and graphical clients from this network
+        to communicate with the management
+      section: ADVANCED
+      validation: Enter a valid IPv4 network CIDR (e.g. 0.0.0.0/0)
+      level: 1
+    - name: numAdditionalNICs
+      title: Number of additional network interfaces
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork1
+      title: 2nd network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork1
+      title: 2nd subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP1
+      title: 2nd interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork2
+      title: 3rd network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork2
+      title: 3rd subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP2
+      title: 3rd interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork3
+      title: 4th network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork3
+      title: 4th subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP3
+      title: 4th interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork4
+      title: 5th network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork4
+      title: 5th subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP4
+      title: 5th interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork5
+      title: 6th network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork5
+      title: 6th subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP5
+      title: 6th interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork6
+      title: 7th network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork6
+      title: 7th subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP6
+      title: 7th interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalNetwork7
+      title: 8th network
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: additionalSubnetwork7
+      title: 8th subnetwork
+      section: NETWORKING-OPTIONAL
+      level: 1
+    - name: externalIP7
+      title: 8th interface external IP address
+      tooltip: >-
+        An external IP address associated with this interface. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING-OPTIONAL
+      level: 1
+runtime:
+  deployingMessage: >
+    Deployment can take 5-40 minutes to complete, depending on the configuration
+    you have selected
+  applicationTable:
+    rows:
+      - label: External IP address
+        value: '{{ externalIp(outputs().vmSelfLink) }}'
+        showIf: '{{ properties().externalIP != "None" }}'
+      - label: Additional external IP addresses
+        value: '{{ outputs().additionalExternalIPs }}'
+        showIf: '{{ outputs().hasMultiExternalIPs }}'
+      - label: Internal IP address
+        value: '{{ outputs().vmInternalIP }}'
+        showIf: '{{ properties().externalIP == "None" }}'
+      - label: Instance
+        value: >-
+          <a href="{{ consoleUrl(outputs().vmSelfLink) }}">{{ outputs().vmName
+          }}</a>
+      - label: Instance zone
+        value: '{{ properties().zone }}'
+      - label: Instance machine type
+        value: '{{ properties().machineType }}'
+      - label: Admin user
+        value: admin
+      - label: Admin password
+        value: '{{ outputs().password }}'
+        showIf: '{{ properties().generatePassword }}'
+      - label: Secure Internal Communication (SIC) initiation password
+        value: '{{ outputs().sicKey }}'
+        showIf: '{{ outputs().sicKey != "N/A" }}'
+  primaryButton:
+    label: SSH
+    type: TYPE_GCE_VM_SSH
+    action: '{{ outputs().vmSelfLink }}'
+  secondaryButton:
+    label: Log into the GAiA admin portal
+    type: TYPE_URL
+    action: 'https://{{ externalIp(outputs().vmSelfLink) }}'
+  requiredActions: null
+  suggestedActions:
+    - heading: Change the password
+      description: 'For additional security, it is recommended that you change the password.'
+      showIf: '{{ properties().generatePassword }}'
+    - heading: Assign a static external IP address to your VM instance
+      description: >-
+        An ephemeral external IP address has been assigned to the VM instance.
+        If you require a static external IP address, you may promote the address
+        to static. <a
+        href="https://cloud.google.com/compute/docs/instances-and-network#promote_ephemeral_ip">Learn
+        more</a>
+      showIf: '{{ properties().externalIP == "Ephemeral" }}'

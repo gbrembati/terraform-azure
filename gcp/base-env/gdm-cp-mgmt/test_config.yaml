@@ -1,0 +1,8 @@
+imports:
+- path: check-point-vsec--byol.py
+
+resources:
+- name: check-point-vsec--byol
+  type: check-point-vsec--byol.py
+  properties:
+    managementGUIClientNetwork: 0.0.0.0/0

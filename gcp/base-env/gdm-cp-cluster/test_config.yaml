@@ -1,0 +1,9 @@
+imports:
+- path: check-point-cluster--byol.py
+
+resources:
+- name: check-point-cluster--byol
+  type: check-point-cluster--byol.py
+  properties:
+    managementNetwork: 209.87.209.100/32
+    sicKey: a1234567890
