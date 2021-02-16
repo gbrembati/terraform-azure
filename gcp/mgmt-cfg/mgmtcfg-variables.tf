@@ -30,11 +30,6 @@ variable "gcp-dc-name" {
     default = "dc-gcp"
 }
 
-variable "last-jhf" {
-    description = "Provide the name of the JHF to be installed"
-    default = "Check_Point_R80_40_JUMBO_HF_Bundle_T91_sk165456_FULL.tgz"
-}
-
 variable "mgmt-ip" {
     description = "Put the public IP address of your management"
     default= "xx.xx.xx.xx"
