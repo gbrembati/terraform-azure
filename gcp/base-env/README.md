@@ -1,7 +1,7 @@
 # GCP BluePrint Architecture
 This Terraform project is intended to be used as a template in a demonstration or to build a test environment.  
 What it does is creating an infrastructure composed of a North-hub and South-hub and few spokes (the number can be changed).    
-As per my deployments (made in London), this project creates all of the following in less approximately __5 to 7 minutes__.   
+As per my deployments (made in London), this project creates all of the following in approximately __5 to 7 minutes__.   
 
 
 ## Which are the components created?
