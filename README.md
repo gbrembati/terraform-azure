@@ -3,11 +3,13 @@ This repository is a collection of Terraform automation projects, each of them i
 
 ## Which are the projects available?
 The projects can be briefly described as follows:
-1. **azure/base-environment**: It creates an environment based on the CloudGuard Blueprint's design principles
-2. **azure/mgmt-configuration**: It configures existing Check Point management through APIs
+1. **azure/base-environment**: It creates an environment in Azure based on the CloudGuard Blueprint's design principles
+2. **azure/mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
 3. **azure/vmss**: It creates a Virtual-Machine Scale-Sets to be used as outbound / inbound / east-west protection
 4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
 5. **cloudguard-cspm/onboard**: It onboards multiple cloud accounts in a CloudGuard CSPM Portal
+6. **gcp/base-env**: It creates an environment in GCP based on the CloudGuard Blueprint's design principles
+7. **gcp/mgmt-cfg**: It configures existing Check Point management through APIs with GCP objects
 
 ## Do you want to see more? 
 Check the Check Point official CloudGuard IaaS repository here: [CheckPointSW / CloudGuardIaaS](https://github.com/CheckPointSW/CloudGuardIaaS)
