@@ -7,10 +7,10 @@ The projects can be briefly described as follows:
 2. **azure/mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
 3. **azure/vmss**: It creates a Virtual-Machine Scale-Sets to be used as outbound / inbound / east-west protection
 4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
-5. **cloudguard-cspm/onboard**: It onboards multiple cloud accounts in a CloudGuard CSPM Portal
 
 ## The project are now in different Repositories
-Check out my Google Cloud Platform repository here: [GBrembati / GoogleCloudPlatform](https://github.com/gbrembati/terraform-gcp)
+Check out my CloudGuard Native repository here: [gbrembati / GoogleCloudPlatform](https://github.com/gbrembati/terraform-gcp)
+Check out my Google Cloud Platform repository here: [gbrembati / CloudPostureManagement](https://github.com/gbrembati/terraform-cloudguard-native)
 
 ## Do you want to see more? 
 Check the Check Point official CloudGuard IaaS repository here: [CheckPointSW / CloudGuardIaaS](https://github.com/CheckPointSW/CloudGuardIaaS)
