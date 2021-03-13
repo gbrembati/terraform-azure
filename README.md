@@ -1,5 +1,5 @@
 # Terraform Projects
-This repository is a collection of Terraform automation projects, each of them is intended to be used as a template in a demonstration or to build a test environment.  In the directories, you will find a description of what the each project does and if you want (or need) to customize them, you can change defaults in the different __*name-variables.tf*__ files. 
+This repository is a collection of Terraform automation projects, each of them is intended to be used as a template in a demonstration or to build a test environment.  In the directories, you will find a description of what each project does and if you want (or need) to customize them, you can change defaults in the different __*name-variables.tf*__ files. 
 
 ## Which are the projects available?
 The projects can be briefly described as follows:
