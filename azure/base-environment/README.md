@@ -51,4 +51,4 @@ If you want (or need) to further customize other project details, you can change
 Here you will also able to find the descriptions that explains what each variable is used for.
 
 ## The infrastruction created with the following design:
-![Architectural Design](/images/schema-base-env.jpg)
+![Architectural Design](/zimages/schema-base-env.jpg)
