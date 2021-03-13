@@ -9,7 +9,7 @@ The projects can be briefly described as follows:
 4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
 
 ## The project are now in different Repositories
-Check out my CloudGuard Native repository here: [gbrembati / GoogleCloudPlatform](https://github.com/gbrembati/terraform-gcp)
+Check out my CloudGuard Native repository here: [gbrembati / GoogleCloudPlatform](https://github.com/gbrembati/terraform-gcp)    
 Check out my Google Cloud Platform repository here: [gbrembati / CloudPostureManagement](https://github.com/gbrembati/terraform-cloudguard-native)
 
 ## Do you want to see more? 
