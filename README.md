@@ -7,6 +7,7 @@ The projects can be briefly described as follows:
 2. **azure/mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
 3. **azure/vmss**: It creates a Virtual-Machine Scale-Sets to be used as outbound / inbound / east-west protection
 4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
+5. **azure/simple-cluster**: It creates a simple architecture with a Check Point Cluster and a Management
 
 ## Do you want to see more? 
 Check out my Terraform Amazon Web Services repository here: [gbrembati / terraform-aws](https://github.com/gbrembati/terraform-aws)   

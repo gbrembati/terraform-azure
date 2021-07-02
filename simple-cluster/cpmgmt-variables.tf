@@ -20,11 +20,12 @@ variable "mgmt-size" {
 
 variable "mgmt-admin-usr" {
     default = "cpadmin"
+    type = string
 }
 
 variable "my-pub-ip" {
     description = "Put your public-ip"
-    default = "2.235.40.59/32"
+    type = string
 }
 
 variable "mgmt-sku-enabled" {

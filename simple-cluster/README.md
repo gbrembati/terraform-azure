@@ -1,18 +1,18 @@
 # Azure BluePrint Architecture
 This Terraform project is intended to be used as a template in a demonstration or to build a test environment.  
-What it does is creating an infrastructure composed of a North-hub and South-hub and few spokes (the number can be changed).    
-As per my deployments (made in France Central), this project creates all of the following in less than __5 minutes__.   
+What it does is creating a simple infrastructure composed of two vNets, the first contains a Check Point R80.40 Management and the second that includes a Check Point Cluster.    
+As per my deployments (made in France Central), this project creates all of the following in less than __10 minutes__.   
 
 
 ## Which are the components created?
 The project creates the following resources and combine them:
-1. **Resource Groups**: for the vnets, the management and the spokes
-2. **Vnet**: north / south / mgmt / spokes
+1. **Resource Groups**: for the vnets, the management and the cluster
+2. **Vnet**: north / mgmt
 3. **Subnets**: inside the vNets
 4. **Vnet peerings** (as shown in the design below)
-5. **Routing table**: associated with the network in the spokes
+5. **Routing table**: associated with the web subnet in the north
 6. **Rules** for the routing tables created
-7. **Network Security Groups**: associated with nets and VMs
+7. **Network Security Groups**: associated with the Check Point Management
 8. **NSG Rules** inside the differents NSGs: to prevent undesired connections
 9. **Virtual machines**: A Check Point R80.40 Management and nginx machines in the spokes 
 10. **Public IPs**: associated with the management and the spoke VMs)
