@@ -16,13 +16,3 @@ variable "location" {
     default = "France Central"
 }
 
-variable "my-pub-ip" {
-    description = "Put your public-ip"
-    default = "2.235.40.59/32"
-}
-
-variable "mgmt-sku-enabled" {
-    description = "Have you ever deployed a ckp management before? set to false if not"
-    type = bool
-    default = true
-}
