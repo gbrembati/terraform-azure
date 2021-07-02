@@ -2,7 +2,7 @@
 This Terraform project is intended to be used as a template in a demonstration or to build a test environment.  
 What it does is creating a simple infrastructure composed of two vNets with a Check Point R80.40 Management, and a Check Point R80.40 Cluster. As per my deployments (made in France Central), this project creates all of the following in less than __10 minutes__.   
    
-The code that I used for the Cluster creation is based on the Check Point Public Terraform Repository: [CheckPointSW / CloudGuardIaaS / terraform](https://github.com/CheckPointSW/CloudGuardIaaS/tree/master/terraform) 
+The code that I used for the Cluster creation is based on the Check Point Public Terraform Repository: [CheckPointSW / CloudGuardIaaS](https://github.com/CheckPointSW/CloudGuardIaaS/tree/master/terraform) 
 
 ## Which are the components created?
 The project creates the following resources and combines them:
