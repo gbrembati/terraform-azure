@@ -267,10 +267,7 @@ resource "azurerm_marketplace_agreement" "cpcluster-agreement" {
 }
 
 resource "azurerm_virtual_machine" "vm-instance-availability-set" {
-  depends_on = [
-    azurerm_network_interface.nic,
-    azurerm_network_interface.nic1,
-    azurerm_network_interface.nic_vip]
+  depends_on = [azurerm_network_interface.nic,azurerm_network_interface.nic1,azurerm_network_interface.nic_vip,azurerm_marketplace_agreement.cpcluster-agreement]
   count = local.availability_set_condition ? module.common.number_of_vm_instances : 0
   name = "${var.cluster_name}${count.index+1}"
   location = module.common.resource_group_location
