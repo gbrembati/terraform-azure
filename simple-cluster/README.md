@@ -43,6 +43,10 @@ availability_type               = "Availability Zone"
 
 admin_password                  = "xxxxxxxxxxxxx"
 sic_key                         = "xxxxxxxxxxxxx"
+
+# Have you ever deployed a Management or a Cluster in this Subscription?
+mgmt-sku-enabled                = false
+cpcluster-sku-enabled           = false
 ```
 If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files.   
 Here you will be also able to find the descriptions that explain what each variable is used for.

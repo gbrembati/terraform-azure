@@ -190,3 +190,9 @@ variable "enable_custom_metrics" {
   type = bool
   default = true
 }
+
+variable "cpcluster-sku-enabled" {
+    description = "Have you ever deployed a ckp cluster before? set to false if not"
+    type = bool
+    default = true
+}

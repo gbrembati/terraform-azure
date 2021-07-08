@@ -16,3 +16,7 @@ availability_type               = "Availability Zone"
 
 admin_password                  = "xxxxxxxxxxxxx"
 sic_key                         = "xxxxxxxxxxxxx"
+
+# Have you ever deployed a Management or a Cluster in this Subscription?
+mgmt-sku-enabled                = false
+cpcluster-sku-enabled           = false

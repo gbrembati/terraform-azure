@@ -258,6 +258,14 @@ resource "azurerm_image" "custom-image" {
     blob_uri = var.source_image_vhd_uri
   }
 }
+# Accept the agreement for the cluster-byol for R80.40
+resource "azurerm_marketplace_agreement" "cpcluster-agreement" {
+  count = var.cpcluster-sku-enabled ? 0 : 1
+  publisher = "checkpoint"
+  offer = var.vm_os_offer
+  plan = var.vm_os_sku
+}
+
 resource "azurerm_virtual_machine" "vm-instance-availability-set" {
   depends_on = [
     azurerm_network_interface.nic,
