@@ -1,13 +1,15 @@
-# Terraform Projects
-This repository is a collection of Terraform automation projects, each of them is intended to be used as a template in a demonstration or to build a test environment.  In the directories, you will find a description of what each project does and if you want (or need) to customize them, you can change defaults in the different __*name-variables.tf*__ files. 
+# Azure Terraform Projects
+This repository is a collection of Terraform automation projects that can be used in an Azure environment.    
+These projects are intended to be used as a template to demonstrate or build a test environment. You will find a description of what each project does in the directories, and if you want (or need) to customize them, you can change defaults in the different __*name-variables.tf*__ files. 
 
 ## Which are the projects available?
 The projects can be briefly described as follows:
-1. **azure/base-environment**: It creates an environment in Azure based on the CloudGuard Blueprint's design principles
-2. **azure/mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
-3. **azure/vmss**: It creates a Virtual-Machine Scale-Sets to be used as outbound / inbound / east-west protection
-4. **azure/vmss-vpn**: It creates a Virtual-Machine Scale-Sets with the Remote-Access components
-5. **azure/simple-cluster**: It creates a simple architecture with a Check Point Cluster and a Management
+1. **./1-base-environment**: It creates an environment in Azure based on the CloudGuard Blueprint's design principles
+2. **./2-mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
+3. **./3-vmss**: It creates a Virtual Machine Scale-Set to be used as outbound / inbound / east-west protection
+4. **./4-vmss-vpn**: It creates a Virtual Machine Scale-Set with the Remote-Access components
+5. **./5-simple-cluster**: It creates a simple architecture with a Check Point Cluster and a Management
+6. **./6-appsec-vmss-igateway**: It creates architecture with an AppSec Virtual Machine Scale-Set
 
 ## Do you want to see more? 
 Check out my Terraform Amazon Web Services repository here: [gbrembati / terraform-aws](https://github.com/gbrembati/terraform-aws)   
@@ -18,7 +20,7 @@ Check the Check Point official CloudGuard IaaS repository here: [CheckPointSW / 
 
 ## How do you use these projects?
 The first thing that you need to do is download this repository, either via "*git clone*" or "*download as ZIP*".  
-Choose which are projects that you want to use, and in each directory change the relative __*terraform.tfvars*__ file.   
+Choose which projects you want to use, and in each directory, change the relative __*terraform.tfvars*__ file.   
 Once you have done the above, simply go inside the directory of a single project and run these terraform commands.
 
 ##
