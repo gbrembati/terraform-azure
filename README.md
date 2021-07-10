@@ -4,12 +4,12 @@ These projects are intended to be used as a template to demonstrate or build a t
 
 ## Which are the projects available?
 The projects can be briefly described as follows:
-1. **./1-base-environment**: It creates an environment in Azure based on the CloudGuard Blueprint's design principles
-2. **./2-mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
-3. **./3-vmss**: It creates a Virtual Machine Scale-Set to be used as outbound / inbound / east-west protection
-4. **./4-vmss-vpn**: It creates a Virtual Machine Scale-Set with the Remote-Access components
-5. **./5-simple-cluster**: It creates a simple architecture with a Check Point Cluster and a Management
-6. **./6-appsec-vmss-igateway**: It creates architecture with an AppSec Virtual Machine Scale-Set
+1. **./base-environment**: It creates an environment in Azure based on the CloudGuard Blueprint's design principles
+2. **./mgmt-configuration**: It configures existing Check Point management through APIs with Azure objects
+3. **./vmss**: It creates a Virtual Machine Scale-Set to be used as outbound / inbound / east-west protection
+4. **./vmss-vpn**: It creates a Virtual Machine Scale-Set with the Remote-Access components
+5. **./simple-cluster**: It creates a simple architecture with a Check Point Cluster and a Management
+6. **./appsec-vmss-igateway**: It creates architecture with an AppSec Virtual Machine Scale-Set
 
 ## Do you want to see more? 
 Check out my Terraform Amazon Web Services repository here: [gbrembati / terraform-aws](https://github.com/gbrembati/terraform-aws)   
