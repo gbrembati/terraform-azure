@@ -36,7 +36,7 @@ appsec-vmss-min     = "2"
 appsec-vmss-max     = "3" 
 ```
 If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files.   
-Here you will also able to find the descriptions that explains what each variable is used for.
+Here you will be also able to find the descriptions that explain what each variable is used for.
 
 ## The infrastruction created with the following design:
 ![Architectural Design](/zimages/schema-vmss-appsec.jpg)
