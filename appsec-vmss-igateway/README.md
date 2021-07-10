@@ -1,7 +1,7 @@
 # CloudGuard AppSec Scalable Infinity Gateway Architecture
 This Terraform project is meant to be used as a template to demonstrate or build a test environment.    
 It creates an infrastructure composed of a North-hub and two spokes: one for the production and one for the staging.     
-In the North-hub, an Appsec Virtual Machine Scale-Set is created, and inside the spokes is created a container instance of a vulnerable application.
+In the North-hub, an Appsec Virtual Machine Scale-Set is created, and inside the spokes is created a container instance of a vulnerable application ([Juice Shop](https://github.com/bkimminich/juice-shop)).
 
 ## Which are the components created?
 The project creates the following resources and combines them:
