@@ -4,7 +4,14 @@ It creates an infrastructure composed of a North-hub and two spokes: one for the
 In the North-hub, an Appsec Virtual Machine Scale-Set is created, and inside the spokes is created a container instance of a vulnerable application ([Juice Shop](https://github.com/bkimminich/juice-shop)).
 
 ## Which are the components created?
-The project creates the following resources and combines them:
+The project creates the following resources and combine them:    
+1. **Resource Groups**: for all the entities
+2. **Vnet**: the north-hub and the two Vnets for the spokes
+3. **Subnets**: inside the vNets
+4. **Vnet peerings** (as shown in the design below)
+5. **Routing table**: associated with the network in the spokes
+6. **Appsec Infinity Gateway**: a Virtual Machine Scale-Set of AppSec gateways
+7. **Container Instances**: in the spokes running a vulnerable application
 
 ## Which are the outputs of the project?
 The project gives as outputs the FQDNs of the Staging and Production Application.     
@@ -39,4 +46,4 @@ If you want (or need) to further customize other project details, you can change
 Here you will be also able to find the descriptions that explain what each variable is used for.
 
 ## The infrastruction created with the following design:
-![Architectural Design](/zimages/schema-vmss-appsec.jpg)
+![Architectural Design](/zimages/schema-vmss-igappsec.jpg)
