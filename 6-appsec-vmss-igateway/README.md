@@ -15,8 +15,8 @@ The project creates the following resources and combine them:
 
 ## Prerequisite
 Before you can start you would need to have an Appsec token that can be obtained with the following steps:
-1. **Application Profile**: [Steps to create a new profile](/zimages/appsec-profile.jpg){target="_blank"}.
-2. **Obtaining the Token**: [Steps to obtain a Token from a profile](/zimages/appsec-token.jpg){target="_blank"}.
+1. **Application Profile**: [Steps to create a new profile](/zimages/appsec-profile.jpg){:target="_blank"}.
+2. **Obtaining the Token**: [Steps to obtain a Token from a profile](/zimages/appsec-token.jpg){:target="_blank"}.
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
@@ -52,8 +52,8 @@ You will need to use them for the Infinity Portal configuration, in the INFINITY
 
 ## How to configure application in the Infinity Portal?
 With the following steps you can create your application with the FQDN provided by Terraform as output:
-1. **Staging Application**: [How to create the Staging application](/zimages/appsec-app-staging.jpg){target="_blank"}.
-2. **Production Application**: [How to create the Production application](/zimages/appsec-app-prod.jpg){target="_blank"}.
+1. **Staging Application**: [How to create the Staging application](/zimages/appsec-app-staging.jpg){:target="_blank"}.
+2. **Production Application**: [How to create the Production application](/zimages/appsec-app-prod.jpg){:target="_blank"}.
 
 After you have created both application, the Enforce of the changes has to be done.
 
