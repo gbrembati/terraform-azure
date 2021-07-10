@@ -7,7 +7,8 @@ In the North-hub, an Appsec Virtual Machine Scale-Set is created, and inside the
 The project creates the following resources and combines them:
 
 ## Which are the outputs of the project?
-The project gives as outputs the FQDNs of the Staging and Production Application. You will need to use them for the Infinity Portal configuration.     
+The project gives as outputs the FQDNs of the Staging and Production Application.     
+You will need to use them for the Infinity Portal configuration, in the INFINITY POLICY application.
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
