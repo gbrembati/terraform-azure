@@ -13,9 +13,10 @@ The project creates the following resources and combine them:
 6. **Appsec Infinity Gateway**: a Virtual Machine Scale-Set of AppSec gateways
 7. **Container Instances**: in the spokes running a vulnerable application
 
-## Which are the outputs of the project?
-The project gives as outputs the FQDNs of the Staging and Production Application.     
-You will need to use them for the Infinity Portal configuration, in the INFINITY POLICY application.
+## Prerequisite
+Before you can start you would need to have an Appsec token that can be obtained with the following steps:
+![Application Profile](/zimages/appsec-app-staging.jpg)
+![Application Token](/zimages/appsec-app-staging.jpg)
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
@@ -45,5 +46,16 @@ appsec-vmss-max     = "3"
 If you want (or need) to further customize other project details, you can change defaults in the different __*name-variables.tf*__ files.   
 Here you will be also able to find the descriptions that explain what each variable is used for.
 
-## The infrastruction created with the following design:
+## Which are the outputs of the project?
+The project gives as outputs the FQDNs of the Staging and Production Application.     
+You will need to use them for the Infinity Portal configuration, in the INFINITY POLICY application.
+
+## How to configure application in the Infinity Portal?
+With the following steps you can create your application with the FQDN provided by Terraform as output.
+![Application Staging](/zimages/appsec-app-staging.jpg)
+![Application Prod](/zimages/appsec-app-prod.jpg)
+
+After you have created both application, the Enforce of the changes has to be done.
+
+## The infrastructure is created with the following design:
 ![Architectural Design](/zimages/schema-vmss-igappsec.jpg)
