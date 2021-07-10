@@ -1,14 +1,13 @@
-# Azure BluePrint Architecture
-This Terraform project is intended to be used as a template in a demonstration or to build a test environment.    
-What it does is creating an infrastructure composed of a North-hub and two spokes: one for the production and one for the staging.    
-Inside the North-hub an Appsec Virtual Machine Scale-Set and in the spokes a cointainer instance of a vulnerable application.    
+# CloudGuard AppSec Scalable Infinity Gateway Architecture
+This Terraform project is meant to be used as a template to demonstrate or build a test environment.    
+It creates an infrastructure composed of a North-hub and two spokes: one for the production and one for the staging.     
+In the North-hub, an Appsec Virtual Machine Scale-Set is created, and inside the spokes is created a container instance of a vulnerable application.
 
 ## Which are the components created?
-The project creates the following resources and combine them:
-
+The project creates the following resources and combines them:
 
 ## Which are the outputs of the project?
-The project gives the outputs of the FQDN of the Staging and Production Application to be configured inside the Infinity Portal.
+The project gives as outputs the FQDNs of the Staging and Production Application. You will need to use them for the Infinity Portal configuration.     
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
