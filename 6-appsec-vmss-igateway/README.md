@@ -15,8 +15,8 @@ The project creates the following resources and combine them:
 
 ## Prerequisite
 Before you can start you would need to have an Appsec token that can be obtained with the following steps:
-1. **Application Profile**: [Steps to create a new profile](https://github.com/gbrembati/terraform-azure/tree/master/zimages/appsec-profile.jpg)
-2. **Obtaining the Token**: [Steps to obtain a Token from a profile](/zimages/appsec-token.jpg/?target=_blank)
+1. **Application Profile**: [Steps to create a new profile](/zimages/appsec-profile.jpg){target="_blank"}
+2. **Obtaining the Token**: [Steps to obtain a Token from a profile](/zimages/appsec-token.jpg "AppSec-Token" target="_blank")
 
 ## How to use it
 The only thing that you need to do is changing the __*terraform.tfvars*__ file located in this directory.
