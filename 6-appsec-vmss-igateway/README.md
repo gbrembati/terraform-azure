@@ -48,12 +48,13 @@ Here you will be also able to find the descriptions that explain what each varia
 
 ## Which are the outputs of the project?
 The project gives as outputs the FQDNs of the Staging and Production Application.     
-You will need to use them for the Infinity Portal configuration, in the INFINITY POLICY application.
+You will need to use them for the Infinity Portal configuration, in the INFINITY POLICY application.    
+If you don't have a Portal you can create one following this link: [Register](https://portal.checkpoint.com/create-account)
 
 ## How to configure application in the Infinity Portal?
 With the following steps you can create your application with the FQDN provided by Terraform as output:
-1. **Staging Application**: [How to create the Staging application](/zimages/appsec-app-staging.jpg){:target="_blank"}
-2. **Production Application**: [How to create the Production application](/zimages/appsec-app-prod.jpg){:target="_blank"}
+1. **Staging Application**: [How to create the Staging application](/zimages/appsec-app-staging.jpg)
+2. **Production Application**: [How to create the Production application](/zimages/appsec-app-prod.jpg)
 
 After you have created both application, the Enforce of the changes has to be done.
 
