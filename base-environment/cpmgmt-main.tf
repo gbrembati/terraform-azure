@@ -1,3 +1,11 @@
+# Accept the agreement for the mgmt-byol for R80.40
+resource "azurerm_marketplace_agreement" "cpmgmt-agreement" {
+  count     = var.mgmt-sku-enabled ? 0 : 1
+  publisher = "checkpoint"
+  offer     = "check-point-cg-${var.mgmt-version}"
+  plan      = var.mgmt-sku
+}
+
 resource "azurerm_resource_group" "rg-ckpmgmt" {
   name      = "rg-${var.mgmt-name}"
   location  = var.location
