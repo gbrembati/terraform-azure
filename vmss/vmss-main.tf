@@ -147,7 +147,7 @@ provider "checkpoint" {
 # Configure the CME: autoprov-cfg service 
 resource "checkpoint_management_run_script" "management-cme-config" {
   script_name = "CME Configuration for VMSS"
-  script = "yes | autoprov_cfg init Azure -mn ${var.mgmt-name} -tn ${var.vmss-template} -otp ${var.vmss-sic} -ver R80.40 -po ${var.new-policy-pkg} -cn ${var.mgmt-controller} -sb ${var.azure-subscription} -at ${var.azure-tenant} -aci ${var.azure-client-id} -acs ${var.azure-client-secret}; yes | autoprov_cfg set template -tn ${var.vmss-template} -ia -uf -appi -av -ab -ips"
+  script = "yes | /opt/CPcme/bin/autoprov_cfg init Azure -mn '${var.mgmt-name}' -tn '${var.vmss-template}' -otp '${var.vmss-sic}' -ver R80.40 -po '${var.new-policy-pkg}' -cn '${var.mgmt-controller}' -sb '${var.azure-subscription}' -at '${var.azure-tenant}' -aci '${var.azure-client-id}' -acs '${var.azure-client-secret}'; yes | /opt/CPcme/bin/autoprov_cfg set template -tn '${var.vmss-template}' -ia -uf -appi -av -ab -ips"
   targets = [var.mgmt-name]
   depends_on = [azurerm_resource_group_template_deployment.template-deployment-vmss]
 }
